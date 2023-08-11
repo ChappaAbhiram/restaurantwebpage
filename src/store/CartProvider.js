@@ -11,12 +11,42 @@ const CartProvider = (props) => {
     const removeItemHandler = (itemId) => {
         setItems((prevItems) => prevItems.filter(item => item.id !== itemId));
     };
-
+    // const IncreaseItemHandler=(itemId)=>{
+    //     setItems((prevItems)=>{
+    //         return prevItems.map(item=>{
+    //             if(item.id==itemId){
+    //                 return{...item,quantity : item.quantity+1}
+    //             }
+    //         })
+    //     })
+    // }
+    const updateItemQuantity=(itemId)=>{
+        setItems((prevItems)=>{
+            return prevItems.map(item=>{
+                if(item.id==itemId){
+                    return{...item,quantity : item.quantity-1}
+                }
+                return item;
+            })
+        })
+    }
+    const increaseItemQuantity= (itemId) =>{
+        setItems((prevItems)=>{
+            return prevItems.map(item=>{
+                if(item.id==itemId){
+                    return{...item,quantity : item.quantity+1}
+                }
+                return item;
+            })
+        })
+    }
     const contextValue = {
         items: items,
         totalAmount : 0,
         addItem: addItemHandler,
         removeItem: removeItemHandler,
+        updateItemQuantity : updateItemQuantity,
+        increaseItemQuantity : increaseItemQuantity
     };
 
     return (
