@@ -10,7 +10,7 @@ const MealItemForm = (props) => {
         event.preventDefault();
         const quantity = +document.getElementById('amount_' + props.id).value;
         cartCtx.addItem({ ...props.items, quantity: quantity });
-        console.log('after addItemtoCart',cartCtx);
+        // console.log('after addItemtoCart',cartCtx);
     };
 
     return (
